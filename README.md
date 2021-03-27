@@ -1,2 +1,2 @@
 # Taskool 🗒
-A simple and minimal task management program
+A simple and minimal task management application

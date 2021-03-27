@@ -1,4 +1,4 @@
-# taskom
+# Taskool
 
 ## Project setup
 ```

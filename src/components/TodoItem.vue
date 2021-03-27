@@ -56,8 +56,8 @@ input.item-check
         content: '\2714'
         font-size: 14px
         position: absolute
-        top: -5px
-        left: 1px
+        top: -6px
+        left: 2px
         color: white
 .edit
     margin-left: 24px

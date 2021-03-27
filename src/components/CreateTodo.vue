@@ -47,9 +47,8 @@ form
     align-items: center
     padding-right: 24px
     padding-left: 10px
-@media screen and (max-width: 768px)
-	form
-		margin-top: 56px
+    @media screen and (max-width: 768px)
+        margin-top: 56px
 .title-todo
     background: none
     border: 0

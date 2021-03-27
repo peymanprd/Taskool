@@ -36,16 +36,19 @@ export default {
                 {
                     id: 1,
                     title: "نسخه آزمایشی وظیفه ای که وجود ندارد",
+                    edit: false,
                     done: false
                 },
                 {
                     id: 2,
                     title: "رسیدگی به میز کار",
+                    edit: false,
                     done: false
                 },
                 {
                     id: 3,
                     title: "در نهایت به پایان رساندن پروژه سایت شخصی",
+                    edit: false,
                     done: false
                 }
             ]
@@ -84,6 +87,9 @@ h1
     height: 24px
     stroke: $dark3-color
     margin-left: 8px
+  @media screen and (max-width: 768px)
+    margin-top: 24px
+
 #nav
     display: flex
     flex-direction: row
@@ -93,7 +99,6 @@ h1
 .container
     max-width: 730px
     margin: 0 auto
-@media screen and (max-width: 768px)
-  .container
-    max-width: 90%
+    @media screen and (max-width: 768px)
+        max-width: 90%
 </style>

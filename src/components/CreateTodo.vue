@@ -6,8 +6,11 @@
 </template>
 
 <script>
+
 import uuid from "uuid";
+
 export default {
+
     name: "CreateTodo",
     data() {
         return {
@@ -15,16 +18,20 @@ export default {
         }
     },
     methods: {
-        createTodo() {
+        createTodo(e) {
+            e.preventDefault();
             const newTodo = {
                 id: uuid.v4(),
                 title: this.title,
-                completed: false
+                done: false
             }
-            this.$emit('', createTodo);
+            this.$emit('create-todo', newTodo);
+            this.title = '';
         }
     }
+
 }
+
 </script>
 
 <style lang="sass" scoped>
@@ -40,6 +47,9 @@ form
     align-items: center
     padding-right: 24px
     padding-left: 10px
+@media screen and (max-width: 768px)
+	form
+		margin-top: 56px
 .title-todo
     background: none
     border: 0

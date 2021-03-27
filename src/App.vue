@@ -1,124 +1,99 @@
 <template>
   <div id="app">
-		<div class="container">
-			<nav class="nav">
-				<a href="/" class="logo"><img alt="Taskom logo" src="./assets/logo.svg"></a>
-				<a class="help" href="/about"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>راهنما</a>
-			</nav>
-			<CreateTodo />
-			<h2><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>لیست وظایف</h2>
-			<Todos v-bind:todos="todos" v-on:delete-todo="deleteTodo" />
-		</div>
+    <div class="container">
+        <div id="nav">
+            <router-link to="/"><img src="./assets/logo.svg" alt="taskool logo"></router-link>
+        </div>
+        <CreateTodo v-on:create-todo="createTodo" />
+        <h1><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>لیست وظایف</h1>
+        <Todos v-bind:todos="todos" v-on:delete-todo="deleteTodo" />
+    </div>
+    <router-view/>
   </div>
 </template>
 
 <script>
 
-import CreateTodo from './components/CreateTodo.vue'
-import Todos from './components/Todos.vue'
+import CreateTodo from "./components/CreateTodo"
+import Todos from "./components/Todos"
 
 export default {
-  name: 'App',
-  components: {
-		CreateTodo,
-    Todos
-  },
-	data() {
-		return {
-			todos: [
-				{
-					id: 1,
-					title: "وظیفه شماره یک",
-					compeleted: false
-				},
-				{
-					id: 2,
-					title: "خرید منزل",
-					compeleted: true
-				},
-				{
-					id: 3,
-					title: "اتمام پروژه سد سازی مغلستان شرقی",
-					compeleted: false
-				}
-			]
-		}
-	},
-	methods: {
-		deleteTodo(id) {
-			this.todos = this.todos.filter(todo => todo.id !== id);
-		}
-	}
+    components: {
+        CreateTodo,
+        Todos
+    },
+    methods: {
+      deleteTodo(id) {
+        this.todos = this.todos.filter(todo => todo.id !== id);
+      },
+      createTodo(newTodo) {
+        this.todos = [...this.todos, newTodo];
+      }
+    },
+    data() {
+        return {
+            todos: [
+                {
+                    id: 1,
+                    title: "نسخه آزمایشی وظیفه ای که وجود ندارد",
+                    done: false
+                },
+                {
+                    id: 2,
+                    title: "رسیدگی به میز کار",
+                    done: false
+                },
+                {
+                    id: 3,
+                    title: "در نهایت به پایان رساندن پروژه سایت شخصی",
+                    done: false
+                }
+            ]
+        }
+    }
 }
-	
 </script>
 
 <style lang="sass">
-
 @import "./sass/variables"
-@import "./sass/base"
 
-*, *::before, *::after
-	box-sizing: border-box
-	outline: none
+*,*::before,*::after
+    box-sizing: border-box
+    outline: none
+body
+    direction: rtl
+
+a
+  display: flex
+
 #app
-  font-family: "Estedad", Helvetica, Arial, sans-serif
+  font-family: "Estedad", Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+
+h1
+  font-size: $font-size
+  font-weight: 500
+  color: $dark3-color
+  display: flex
+  align-items: center
   margin-top: 48px
-
-h1,h2,h3,h4,h5,h6,p,a,button
-	font-size: $font-size
-	font-family: "Estedad"
-
-body
-	direction: rtl
-a
-	display: flex
-	vertical-align: middle
-h2
-	display: flex
-	flex-direction: row
-	align-items: center
-	margin-top: 48px
-	margin-bottom: 16px
-	color: $dark3-color
-	font-weight: 400
-	font-size: $font-size
-	.icon
-		width: 20px
-		height: 20px
-		stroke: $dark2-color
-		margin-left: 12px
-
+  margin-bottom: 16px
+  .icon
+    width: 24px
+    height: 24px
+    stroke: $dark3-color
+    margin-left: 8px
+#nav
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    margin-top: 48px
 .container
-	max-width: 730px
-	margin: 0 auto
-
-@media screen and (max-width: 760px)
-	.container
-		max-width: 90%
-
-.nav
-	display: flex
-	flex-direction: row
-	justify-content: space-between
-
-.help
-	text-decoration: none
-	color: $dark5-color
-	padding: 10px 20px
-	display: flex
-	direction: row
-	align-items: center
-	font-weight: 500
-	&:hover
-		color: $primary-color
-	.icon
-		width: 24px
-		height: 24px
-		stroke: $dark4-color
-		margin-left: 4px
-
-
+    max-width: 730px
+    margin: 0 auto
+@media screen and (max-width: 768px)
+  .container
+    max-width: 90%
 </style>

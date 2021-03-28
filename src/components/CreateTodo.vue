@@ -19,14 +19,15 @@ export default {
     },
     methods: {
         createTodo(e) {
-            e.preventDefault();
             const newTodo = {
                 id: uuid.v4(),
                 title: this.title,
+                edit: false,
                 done: false
             }
             this.$emit('create-todo', newTodo);
             this.title = '';
+            e.preventDefault();
         }
     }
 
@@ -78,6 +79,7 @@ form
         cursor: pointer
         color: white
         background-color: $primary-color
+        box-shadow: none
         .icon
             stroke: white
 

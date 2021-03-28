@@ -1,4 +1,10 @@
-![alt text](https://cdn1.bbcode0.com/uploads/2021/3/28/071e4b905c1b7b160a72f4af779e1337-full.png "Taskool logo")
+
+
+![alt text](https://cdn1.bbcode0.com/uploads/2021/3/28/db9f8eea000359691fb54dda8ce83ea3-full.png"Taskool logo")
+
+
+
+
 
 
 # Taskool

@@ -27,7 +27,7 @@ export default {
         this.todos = this.todos.filter(todo => todo.id !== id);
       },
       createTodo(newTodo) {
-        this.todos = [...this.todos, newTodo];
+          (newTodo.title.length !== 0) ? this.todos = [...this.todos, newTodo] : console.log('Not given');
       }
     },
     data() {
@@ -35,19 +35,19 @@ export default {
             todos: [
                 {
                     id: 1,
-                    title: "نسخه آزمایشی وظیفه ای که وجود ندارد",
+                    title: "نسخه آزمایشی وظیفه شماره یک",
                     edit: false,
                     done: false
                 },
                 {
                     id: 2,
-                    title: "رسیدگی به میز کار",
+                    title: "نمونه آزمایشی شماره دو",
                     edit: false,
                     done: false
                 },
                 {
                     id: 3,
-                    title: "در نهایت به پایان رساندن پروژه سایت شخصی",
+                    title: "نمونه آزمایشی وظیفه نهایی",
                     edit: false,
                     done: false
                 }

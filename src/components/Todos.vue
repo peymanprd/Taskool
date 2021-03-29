@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div v-bind:key="todo.id" v-for="todo in todos">
-            <TodoItem v-bind:todo="todo" v-on:delete-todo="$emit('delete-todo', todo.id)" />
+        <div v-bind:key="todo.id" v-for="(todo,index) in todos">
+            <TodoItem v-bind:todo="todo" v-on:edit-todo="$emit('edit-todo', index)" v-on:update-todo="$emit('update-todo', todo.title, index)" v-on:delete-todo="$emit('delete-todo', todo.id)" />
         </div>
     </div>
 </template>
@@ -19,7 +19,3 @@ export default {
 }
 
 </script>
-
-<style lang="sass">
-
-</style>

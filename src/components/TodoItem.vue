@@ -89,7 +89,7 @@ input.item-check
     display: flex
     flex-direction: row
     justify-content: flex-end
-.edit
+.edit,.delete
     margin-left: 24px
 .delete .icon:hover
     cursor: pointer
